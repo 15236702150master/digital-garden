@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义滚动条样式 */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* 笔记内容使用 Merriweather 字体 */
+.note-content {
+  font-family: var(--font-merriweather), serif;
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.6;
+  color: rgb(104,103,103) !important; /* 与目录颜色一致，使用!important确保优先级 */
+}
+
+.note-content * {
+  color: rgb(104,103,103) !important; /* 确保所有子元素都使用相同颜色 */
+}
+
+.note-content p {
+  margin-bottom: 0.75rem;
+  color: rgb(104,103,103) !important;
+}
+
+.note-content h1, .note-content h2, .note-content h3, .note-content h4, .note-content h5, .note-content h6 {
+  font-family: var(--font-merriweather), serif;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: rgb(104,103,103) !important;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 自定义标题样式 */
+.custom-heading-1,
+h1.custom-heading-1 {
+  font-size: 2rem !important; /* 32px - 比正文大但小于笔记标题 */
+  font-weight: bold !important;
+  color: #000 !important;
+  line-height: 1.2 !important;
+  margin: 16px 0 8px 0 !important;
+  display: block !important;
+}
+
+.custom-heading-2,
+h2.custom-heading-2 {
+  font-size: 1.5rem !important; /* 24px - 比一级标题小 */
+  font-weight: bold !important;
+  color: #000 !important;
+  line-height: 1.3 !important;
+  margin: 14px 0 6px 0 !important;
+  display: block !important;
+}
+
+.custom-heading-3,
+h3.custom-heading-3 {
+  font-size: 1.25rem !important; /* 20px - 比二级标题小但比正文大 */
+  font-weight: bold !important;
+  color: #000 !important;
+  line-height: 1.4 !important;
+  margin: 12px 0 4px 0 !important;
+  display: block !important;
+}
+
+/* 正文字号样式 */
+.normal-text {
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  line-height: 1.6 !important;
+  display: block;
+}
+
+/* 复选框样式 */
+.checkbox-item {
+  display: block;
+  margin: 8px 0;
+  position: relative;
+  padding-left: 24px;
+  min-height: 20px;
+}
+
+.todo-checkbox {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #3b82f6;
+}
+
+.todo-text {
+  display: inline;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  word-wrap: break-word;
+}
+
+/* 深色模式下的标题样式 */
+.dark .heading-1,
+.dark .heading-2,
+.dark .heading-3 {
+  color: #000; /* 保持黑色，即使在深色模式下 */
+}
+
+/* 代码块样式 */
+.code-block-container {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e1e5e9;
+  background: #f8f9fa;
+}
+
+.code-block-header {
+  background: #f1f3f4;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e1e5e9;
+  font-size: 12px;
+  color: #5f6368;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code-block-actions {
+  display: flex;
+  align-items: center;
+}
+
+.copy-code-btn, .delete-code-btn {
+  transition: all 0.2s ease;
+}
+
+.copy-code-btn:hover {
+  background: #e8f0fe !important;
+  border-color: #1976d2 !important;
+  color: #1976d2 !important;
+}
+
+.delete-code-btn:hover {
+  background: #ffeaea !important;
+  border-color: #d32f2f !important;
+  color: #d32f2f !important;
+}
+
+.code-block-content {
+  position: relative;
+}
+
+.code-block-content pre {
+  margin: 0;
+  padding: 16px;
+  background: #ffffff;
+  overflow-x: auto;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.code-block-content code {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* 行号样式 */
+.hljs-ln-numbers {
+  color: #a0a1a7;
+  text-align: right;
+  border-right: 1px solid #e1e5e9;
+  padding-right: 12px;
+  margin-right: 12px;
+  user-select: none;
+  min-width: 40px;
+}
+
+.hljs-ln-code {
+  padding-left: 0;
+}
+
+/* 深色模式下的代码块样式 */
+.dark .code-block-container {
+  border-color: #404040;
+  background: #1a1a1a;
+}
+
+.dark .code-block-header {
+  background: #2a2a2a;
+  border-bottom-color: #404040;
+  color: #a0a0a0;
+}
+
+.dark .code-block-content pre {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.dark .hljs-ln-numbers {
+  color: #666;
+  border-right-color: #404040;
+}
+
+/* 深色模式下的按钮样式 */
+.dark .copy-code-btn:hover {
+  background: #1e3a5f !important;
+  border-color: #64b5f6 !important;
+  color: #64b5f6 !important;
+}
+
+.dark .delete-code-btn:hover {
+  background: #3d1a1a !important;
+  border-color: #f44336 !important;
+  color: #f44336 !important;
+}
