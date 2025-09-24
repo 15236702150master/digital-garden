@@ -3,10 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev -H 0.0.0.0 --turbopack",
+        "dev": "next dev -H 0.0.0.0",
         "build": "next build",
-        "export": "next export",
-        "deploy": "npm run build && npm run export",
         "start": "next start",
         "lint": "tsc --noEmit && next lint",
         "format": "npx biome format --write"
